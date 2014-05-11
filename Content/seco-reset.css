@@ -1,0 +1,43 @@
+﻿html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{
+  margin:0;
+  padding:0;
+  border:0;
+  outline:0;
+  font-size:100%;
+  font:inherit;
+  vertical-align:baseline;
+}
+
+dl, ul, ol { list-style: none; }
+
+h1 { font-size: 3em; }
+h2 { font-size: 2.8em; }
+h3 { font-size: 1.3em; }
+h4 { font-size: 1em; }
+h5 { font-size: 1em; }
+h6 { font-size: 1em; }
+
+.input-append input, .input-prepend input, .input-append select, .input-prepend select,
+.input-append .uneditable-input, .input-prepend .uneditable-input, .input-append .dropdown-menu,
+.input-prepend .dropdown-menu, .input-append .popover, .input-prepend .popover, .btn
+{ font-size: 12px; }
+
+/* HTML 5 elements as block */  
+header, footer, aside, nav, article, section, hgroup, figure, figcaption { display: block; }
+
+/*Clearing Float*/
+.clearfix { *zoom: 1; }
+.clearfix:before,.clearfix:after { display: table; content: ""; }
+.clearfix:after { clear: both; }
+
+
+a:focus,input[type=text]:focus { -moz-outline:none; outline:none; }
+
+/*Public*/
+body  {
+  line-height: 20px; 
+  font-size: 12px;
+  color: #444; 
+  font-family: "Meiryo UI","MS PGothic","Osaka",Arial,sans-serif;
+  -webkit-font-smoothing: antialiased; /* adjust font display effect under webkit browser on Mac OS*/
+}

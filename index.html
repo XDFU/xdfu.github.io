@@ -1,0 +1,345 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>老妈是我最爱的人——一个高考生的母亲节自白</title>
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="Content/themes/base/jquery.ui.all.css" rel="stylesheet" />
+    <link href="Content/seco-reset.css" rel="stylesheet" />
+    <link href="Content/seco-site.css" rel="stylesheet" />
+
+
+
+    <script src="Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+
+
+
+
+    <div id="carousel">
+        <ul>
+            <li class="pane1"><img src="Content/images/1.jpg" alt="" /></li>
+            <li class="pane2"><img src="Content/images/2.jpg" alt="" /></li>
+            <li class="pane3"><img src="Content/images/3.jpg" alt="" /></li>
+            <li class="pane3"><img src="Content/images/4.jpg" alt="" /></li>
+            <li class="pane3"><img src="Content/images/5.jpg" alt="" /></li>
+            <li class="pane3"><img src="Content/images/6.jpg" alt="" /></li>
+            <li class="pane3"><img src="Content/images/7.jpg" alt="" /></li>
+            <li class="pane3"><img src="Content/images/8.jpg" alt="" /></li>
+            
+            
+      </ul>
+    </div>
+        <img id="img_up1" src="Content/images/super-mono-3d-136.png" />
+
+    
+
+
+    <script src="Scripts/jquery-1.10.2.min.js"></script>
+
+    <script src="Scripts/hammer.js"></script>
+
+    <script>
+        function playsong() {
+            var song = document.getElementById("song");
+            song.play();
+        }
+        $(document).ready(function () {
+            var windowH = $(window).height();
+            var windowW = $(window).width();
+            var windowAspect = windowW / windowH;
+            var imgAspect = 2 / 3;
+            $("#carousel").width(windowW).height(windowH);
+            document.addEventListener("touchmove", function (e) { e.preventDefault(); }, false);
+
+            $("#carousel li").css({ "width": windowW, "height": windowH }).parent().height(windowH * $("#carousel li").size());
+            if (windowAspect < imgAspect) {
+                $("#carousel img").css({ "width": windowH * imgAspect, "height": windowH, "left": -(windowH * imgAspect - windowW) / 2, "top": 0 });
+            } else {
+                $("#carousel img").css({ "width": windowW, "height": windowW / imgAspect, "left": 0, "top": -(windowW / imgAspect - windowH) / 2 });
+            }
+            playsong();
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+
+            //图片预加载
+            var s_width = $(window).width();
+            var s_height = $(window).height();
+
+            //图与屏幕的比例
+            var now = s_width / 640;
+
+            var navf_num = 0;
+
+            var w2 = Math.floor(now * 42), h2 = Math.floor(now * 61), t2 = Math.floor(now * 765);
+            var l2 = Math.floor((s_width - w2) / 2);
+            $("#img_up").css({ width: w2 + "px", top: t2 + "px", left: l2 + "px" });
+
+            $(".wrapper").height(s_height);
+            $(".wrapper").width(s_width);
+
+            document.addEventListener("touchmove", function (e) { e.preventDefault(); }, false);
+
+            //图片预加载
+            <img src="Content/images/1.jpg" > 
+			<img src="Content/images/2.jpg" > 
+
+            if (now > 1) {
+                $(".wrapper").width(640);
+                $("#content").css("background-size", "auto");
+                $("#prev_image").css("background-size", "auto");
+                $("#next_image").css("background-size", "auto");
+            }
+
+
+            var isdown = false;
+            var startPos = { x: 0, y: 0 };
+            var endPos = { x: 0, y: 0 };
+
+            for (var i = 0; i < 1000; i++) {
+                setTimeout((function () {
+
+                    return function () {
+
+                        $("#img_up").animate({ top: (t2 - 5) + "px" }, 500);
+                        $("#hand").animate({ top: "55%" }, 500);
+                        setTimeout(function () {
+                            $("#img_up").animate({ top: t2 + "px" }, 300);
+                            $("#hand").animate({ top: "50%" }, 300);
+                        }, 500);
+                    }
+
+                })(), i * 800);
+            }
+
+            //图片预加载
+            function img_preload(src1, src2) {
+                var preImg = new Image();
+                preImg.src = src1;
+                preImg.onload = function () {
+                    var preImg1 = new Image();
+                    preImg1.src = src2;
+                }
+            }
+        });
+
+        //wechat js
+        var dataForWeixin = {
+            appId: "",
+            MsgImg: <img src="Content/images/1.jpg" >  ,
+            TLImg: <img src="Content/images/1.jpg" >,
+            url: './',
+            title: '老妈是我最爱的人——一个高考生的母亲节自白',
+            desc: "老妈，我想告诉您：“不管前方的路多么艰难，不管理想的未来离我有多远，我会带着您爱和鼓励，一直勇敢、坚强地奋斗下去，取得最终的胜利！",
+            fakeid: "",
+            callback: function () { }
+        };
+        (function () {
+            var onBridgeReady = function () {
+                WeixinJSBridge.on('menu:share:appmessage', function (argv) {
+                    WeixinJSBridge.invoke('sendAppMessage', {
+                        "appid": dataForWeixin.appId,
+                        "img_url": dataForWeixin.MsgImg,
+                        "img_width": "120",
+                        "img_height": "120",
+                        "link": dataForWeixin.url,
+                        "desc": dataForWeixin.desc,
+                        "title": dataForWeixin.title
+                    }, function (res) { (dataForWeixin.callback)(); });
+                });
+                WeixinJSBridge.on('menu:share:timeline', function (argv) {
+                    (dataForWeixin.callback)();
+                    WeixinJSBridge.invoke('shareTimeline', {
+                        "img_url": dataForWeixin.TLImg,
+                        "img_width": "120",
+                        "img_height": "120",
+                        "link": dataForWeixin.url,
+                        "desc": dataForWeixin.desc,
+                        "title": dataForWeixin.title
+                    }, function (res) { });
+                });
+                WeixinJSBridge.on('menu:share:weibo', function (argv) {
+                    WeixinJSBridge.invoke('shareWeibo', {
+                        "content": dataForWeixin.title,
+                        "url": dataForWeixin.url
+                    }, function (res) { (dataForWeixin.callback)(); });
+                });
+                WeixinJSBridge.on('menu:share:facebook', function (argv) {
+                    (dataForWeixin.callback)();
+                    WeixinJSBridge.invoke('shareFB', {
+                        "img_url": dataForWeixin.TLImg,
+                        "img_width": "120",
+                        "img_height": "120",
+                        "link": dataForWeixin.url,
+                        "desc": dataForWeixin.desc,
+                        "title": dataForWeixin.title
+                    }, function (res) { });
+                });
+                WeixinJSBridge.call('hideToolbar');
+            };
+            if (document.addEventListener) {
+                document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+            } else if (document.attachEvent) {
+                document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+            }
+        })();
+
+    </script>
+    <script>
+        function Carousel(element) {
+            var self = this;
+            element = $(element);
+
+            var container = element.children();
+            var panes = container.children();
+
+            var pane_height = 0;
+            var pane_count = panes.length;
+
+            var current_pane = 0;
+
+
+            /**
+             * initial
+             */
+            this.init = function () {
+                setPaneDimensions();
+
+                $(window).on("load resize orientationchange", function () {
+                    setPaneDimensions();
+                });
+            };
+
+
+            /**
+             * set the pane dimensions and scale the container
+             */
+            function setPaneDimensions() {
+                pane_height = element.height();
+
+                panes.each(function () {
+                    $(this).height(pane_height);
+                });
+                container.height(pane_height * pane_count);
+            };
+
+
+            /**
+             * show pane by index
+             */
+            this.showPane = function (index, animate) {
+                // between the bounds
+                index = Math.max(0, Math.min(index, pane_count - 1));
+                current_pane = index;
+
+                var offset = -((100 / pane_count) * current_pane);
+                setContainerOffset(offset, animate);
+            };
+
+
+            function setContainerOffset(percent, animate) {
+                container.removeClass("animate");
+
+                if (animate) {
+                    container.addClass("animate");
+                }
+
+                if (Modernizr.csstransforms3d) {
+                    container.css("transform", "translate3d(0," + percent + "%,0) scale3d(1,1,1)");
+                }
+                else if (Modernizr.csstransforms) {
+                    container.css("transform", "translate(0," + percent + "%)");
+                }
+                else {
+                    var px = ((pane_height * pane_count) / 100) * percent;
+                    container.css("top", px + "px");
+                }
+            }
+
+            this.next = function () { return this.showPane(current_pane + 1, true); };
+            this.prev = function () { return this.showPane(current_pane - 1, true); };
+
+
+            function handleHammer(ev) {
+                // disable browser scrolling
+                ev.gesture.preventDefault();
+                switch (ev.type) {
+                    case 'dragup':
+                    case 'dragdown':
+                        // stick to the finger
+                        var pane_offset = -(100 / pane_count) * current_pane;
+                        var drag_offset = ((100 / pane_height) * ev.gesture.deltaY) / pane_count;
+
+                        // slow down at the first and last pane
+                        if ((current_pane == 0 && ev.gesture.direction == "down") ||
+                            (current_pane == pane_count - 1 && ev.gesture.direction == "up")) {
+                            drag_offset *= 0;
+                        }
+
+                        setContainerOffset(drag_offset + pane_offset);
+                        if (current_pane > 5) {
+                            $("#img_up1").css({ "display": "none" });
+                        }
+                        else {
+                            $("#img_up1").css({ "display": "block" });
+                        }
+                        break;
+
+                    case 'swipeup':
+                        self.next();
+                        ev.gesture.stopDetect();
+                        if (current_pane > 5) {
+                            $("#img_up1").css({ "display": "none" });
+                        }
+                        else {
+                            $("#img_up1").css({ "display": "block" });
+                        }
+                        break;
+
+                    case 'swipedown':
+                        self.prev();
+                        ev.gesture.stopDetect();
+                        if (current_pane > 5) {
+                            $("#img_up1").css({ "display": "none" });
+                        }
+                        else {
+                            $("#img_up1").css({ "display": "block" });
+                        }
+                        break;
+
+                    case 'release':
+                        // more then 50% moved, navigate
+                        if (Math.abs(ev.gesture.deltaY) > pane_height / 2) {
+                            if (ev.gesture.direction == 'down') {
+                                self.prev();
+                            } else {
+                                self.next();
+                            }
+                        }
+                        else {
+                            self.showPane(current_pane, true);
+                        }
+                        console.log(current_pane);
+                        if (current_pane > 5) {
+                            $("#img_up1").css({ "display": "none" });
+                        }
+                        else {
+                            $("#img_up1").css({ "display": "block" });
+                        }
+                        break;
+                }
+            }
+
+            new Hammer(element[0], { drag_lock_to_axis: true }).on("release dragup dragdown swipeup swipedown", handleHammer);
+        }
+
+        var carousel = new Carousel("#carousel");
+        carousel.init();
+
+    </script>
+
+</body>
+</html>
